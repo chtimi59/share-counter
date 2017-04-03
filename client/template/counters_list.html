@@ -1,0 +1,33 @@
+<nav class="local_menu">	
+	<div class="right">
+		<a href="#" ng-click="addCounter()"><i class="fa fa-plus-square"></i> {{S['COUNTER_ADD']}}</a>
+		<a href="#" ng-click="showLIST()"><i class="fa fa-times"></i> {{S['COUNTER_CLOSE']}}</a>
+	</div>
+</nav>
+
+<table class="table table-striped">
+<thead>
+    <tr>
+        <th class="column_name"></th>
+        <th class="column_wkeys optional"><span class="wkeycolor"><i class="fa fa-key"></i> {{S['WRITEK']}}</span></th>
+        <th class="column_rkeys optional"><span class="rkeycolor"><i class="fa fa-key"></i> {{S['READK']}}</span></th>
+        <th class="column_record"></th>
+        <th class="column_operation"></th>
+    </tr>
+</thead>
+<tbody>			
+    <tr ng-repeat="counter in items">
+        <td ng-click="showCOUNTER(counter)"   class="column_name">{{counter.name}}</td>
+        <td ng-click="showWRITEHELP(counter)" class="column_wkeys optional">{{counter.wkey}}</td>
+        <td ng-click="showREADHELP(counter)"  class="column_rkeys optional">{{counter.rkey}}</td>
+        <td ng-click="showCOUNTER(counter)"  ng-if="counter.max!=0"><span class="badge">{{counter.count}}/{{counter.max}}</span></td>
+        <td ng-click="showCOUNTER(counter)"  ng-if="counter.max==0"><span class="badge">{{counter.count}}</span></td>
+        <td class="column_operation">
+            <a ng-click="showSETTING(counter)"><span class="glyphicon glyphicon-cog"></span></a>
+        </td>
+			
+    </tr>		
+</tbody>
+</table>
+<div ng-if="!busy && items.length==0" class="info">{{S['EMPTY']}}</div>
+

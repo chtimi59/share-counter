@@ -1,0 +1,60 @@
+/* desktop navigation bar */
+.navbar {
+	z-index:4;
+}
+.navbar {
+  margin-bottom: 0px;
+}
+.navbar a {
+	color: white;
+	text-decoration: none;
+}
+.navbar a:hover {
+	color: #0D83DD;
+}
+.navbar div {
+	padding-top: 15px;
+	padding-bottom: 15px;	
+	line-height: 20px;
+}
+/* FIX: On drop down menu the main button becomes invisible */
+.navbar  .open>a {
+	color: black  !important;
+}
+
+/* If one day we need to, this is the hightlight color of submenu */
+/*.submenu a:hover {
+	background-color: #CCC !important;
+}*/
+
+
+
+
+/* mobile hamburger */
+.hamburger {
+	z-index:4;
+}
+.hamburger .dropdown{
+	margin-top:  10px;
+	margin-left: 5px;
+}
+.hamburger .dropdown-toggle {
+	background-color: #0D83DD !important;	
+	font-size: 30px;
+}
+
+.hamburger .dropdown-menu {
+	font-size: 25px;
+}
+.hamburger .dropdown-menu li{
+	margin-top:2px;
+	margin-bottom:2px;
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+{
+  "name": "share-counter",
+  "version": "0.0.1",
+  "homepage": "https://github.com/chtimi59/share-counter",
+  "authors": [
+    "jan <jdorgeville@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.11.3",
+    "bootstrap": "3.3.5",
+	"angular": "1.2.16",
+	"font-awesome": "4.3.0",
+	"zeroclipboard": "2.2.0",
+	"col-resizable": "1.5"
+  }
+}

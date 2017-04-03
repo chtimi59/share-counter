@@ -1,0 +1,10 @@
+<form ng-submit="onSubmit()" ng-controller="log-ctrl-forget">
+    <div class="form-group">
+        <label for="email">{{S['LOGIN_ENTERYOUREMAIL']}}</label>
+        <input autofocus type="email" class="form-control input-lg" name="email" ng-model="fields.email">
+    </div>
+	
+	<div ng-if="busy"><img src="css/spinner.gif" /></div>
+    <button type="submit" class="btn-biggreen" ng-if="!busy" ng-disabled="!valid">{{S['LOGIN_SENDMEMYPASSWORD']}}</button>
+    </form>
+</form>

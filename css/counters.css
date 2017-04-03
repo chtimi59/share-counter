@@ -1,0 +1,179 @@
+.counter_box a {
+	color: #0D83DD;
+	text-decoration: none;
+	margin-left: 10px;
+}
+.counter_box a:hover {
+    color: #555;	
+    cursor: pointer;	
+}
+
+.counter_box {
+	background-color: #e9e9e9;
+	color: #555;
+	padding:20px;
+	border-radius: 10px;
+	font-family: Verdana,sans-serif;
+	min-height: 50vh;	
+}
+
+.counter_box .info {
+	text-align: center;
+	padding-top: 20px;	
+	color: #999;
+}
+
+
+/* counter table */
+.counter_box .column_name { width: 200px; font-weight: bold; text-align: left; } 
+.counter_box td.column_name { }
+.counter_box td.column_name:hover { 
+    background-color: #CCC !important;
+	cursor: pointer;
+	color: white;
+}
+
+.counter_box .column_rkeys { max-width: 15%; text-align: left; }
+.counter_box td.column_rkeys { font-size: 0.8em; }
+.counter_box td.column_rkeys:hover { 
+    background-color: #CCC !important;
+	cursor: pointer;
+	color: white;
+}
+
+.counter_box .column_wkeys { max-width: 15%; text-align: left; }
+.counter_box td.column_wkeys { font-size: 0.8em; }
+.counter_box td.column_wkeys:hover { 
+    background-color: #CCC !important;
+	cursor: pointer;
+	color: white;
+}
+
+.counter_box .column_record { width: 100px; text-align: left; }
+.counter_box td.column_record { }
+
+.counter_box .column_operation { width: 100px; text-align: right; }
+.counter_box td.column_operation { font-size: 20px; }
+
+
+/* record table */
+.counter_box #recordsTable {
+	width: 100%;
+}
+.counter_box #recordsTable td {
+	cursor: pointer;
+	border: 1px solid #CCC;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+	background:white;
+    height: 37px;
+}
+.counter_box #recordsTable th {
+	border-right: 1px solid #BBB;
+    border-bottom: 1px solid #BBB;
+    background-color: #DDD;
+    text-align: center;
+    color: black;
+    font-weight: normal;
+	cursor: pointer;
+}
+.counter_box td.column_id { 
+	border-right: 1px solid #BBB !important;
+    border-bottom: 1px solid #BBB !important;
+    background-color: #DDD !important;
+    text-align: center !important;
+    color: black !important;
+    font-weight: normal !important;
+	cursor: pointer !important;
+} 
+
+.counter_box td.column_selected{ 
+	background-color: #999 !important;
+	color: white;
+} 
+/*
+.counter_box .contextMenu{
+    position: absolute;
+    margin: 0px;
+    margin-top: -48px;
+    margin-left: -6px;
+    background-color: #555;
+    height: 40px;
+    padding-right: 25px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 0px;
+    text-align: left;
+    border-radius: 10px 10px 0px 0px;
+    color: white;
+}
+
+.counter_box .contextMenu a {
+	color: white;
+    font-size: 20px;
+}
+.counter_box .contextMenu a:hover {
+	color: #CCC;
+}
+
+*/
+
+.counter_box th.column_id { width: 20px; font-weight: bold;} 
+.counter_box td.column_id { font-weight: bold; } 
+.counter_box td.column_date {  } 
+.counter_box th.column_location_icon { width: 20px; } 
+.counter_box td.column_location_icon { text-align: center;  } 
+.counter_box td.column_location_icon:hover { color: #0D83DD; } 
+.counter_box td.column_location {  } 
+.counter_box td.column_author {  } 
+.counter_box td.column_text {  } 
+.counter_box td.column_value {  } 
+
+
+.counter_box .busy {
+    position: absolute;
+}
+
+
+/* local menu */
+.counter_box .local_menu {
+	border-bottom: 1px solid white;
+	margin-bottom: 10px;
+	height: 40px;
+	font-size: 20px;
+}
+.counter_box .local_menu .left {
+	position:absolute;
+}
+.counter_box .local_menu .right {
+	float:right;
+}
+
+/* code sample */
+.counter_box .samplesection {
+	margin-bottom: 50px;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: #EEE;
+}
+.counter_box h1 {
+    margin-top: 5px;
+	margin-bottom: 15px;
+	font-size:30px;
+    color: #0D83DD;
+}
+.counter_box .copy {
+    border-radius: 0px 0px 10px 10px;
+    background-color: #CCC;
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 15px;
+    padding-bottom: 3px;
+    margin-left: 20px;  
+}
+.counter_box .sample {
+	padding: 10px;
+}
+.counter_box .sample p {
+    font-weight: bold;
+}

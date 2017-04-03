@@ -1,0 +1,43 @@
+<div ng-controller="counters-ctrl-datas">
+
+<nav class="local_menu">	
+	<div class="left">
+		{{currentCounter.name}}<a href="#" ng-click="listRecords()"><i class="fa fa-refresh"></i></a>
+	</div>
+	<div class="right">
+		<a href="#" ng-click="showLIST()"><i class="fa fa-times"></i> {{S['COUNTER_CLOSE']}}</a>
+	</div>
+</nav>
+
+<table id="recordsTable" class="table">
+	<thead>
+		<tr>
+			<th class="column_id"></th>
+			<th class="column_date">{{S['RECORD_DATE']}}</th>
+			<th class="column_location_icon"></th>
+			<th class="column_location optional">{{S['RECORD_LATITUDE']}}</th>
+			<th class="column_location optional">{{S['RECORD_LONGITUDE']}}</th>
+			<th class="column_location optional">{{S['RECORD_ALTITUDE']}}</th>
+			<th class="column_author">{{S['RECORD_AUTHOR']}}</th>
+			<th class="column_text">{{S['RECORD_TEXT']}}</th>
+			<th class="column_value">{{S['RECORD_VALUE']}}</th>
+		</tr>
+	</thead>
+	<tbody>			
+		<tr ng-repeat="rec in recs">
+			<td class="column_id" ng-click="toggleSelect(rec,null)"></td>
+			<td class="column_date" ng-click="toggleSelect(rec,'date')" ng-class="{column_selected : rec.id==currentRecordId}">{{rec.date}}</td>
+			<td class="column_location_icon" ng-click="goToGoogleMap(rec)" ng-class="{column_selected : rec.id==currentRecordId}">
+                <i ng-if="rec.lat!==null && rec.lat!==undefined" class="fa fa-map-marker"></i>
+            </td>
+			<td class="column_location optional" ng-click="toggleSelect(rec,'lat')" ng-class="{column_selected : rec.id==currentRecordId}">{{rec.lat}}</td>
+			<td class="column_location optional" ng-click="toggleSelect(rec,'lng')" ng-class="{column_selected : rec.id==currentRecordId}">{{rec.lng}}</td>
+			<td class="column_location optional" ng-click="toggleSelect(rec,'alt')" ng-class="{column_selected : rec.id==currentRecordId}">{{rec.alt}}</td>
+			<td class="column_author" ng-click="toggleSelect(rec,'author')" ng-class="{column_selected : rec.id==currentRecordId}">{{rec.author}}</td>
+			<td class="column_text" ng-click="toggleSelect(rec,'text')" ng-class="{column_selected : rec.id==currentRecordId}">{{rec.text}}</td>
+			<td class="column_value" ng-click="toggleSelect(rec,'value')" ng-class="{column_selected : rec.id==currentRecordId}">{{rec.value}}</td>
+		</tr>		
+	</tbody>
+</table>
+
+</div>

@@ -1,0 +1,16 @@
+<form ng-submit="onSubmit()" ng-controller="log-ctrl-login">
+	<div class="form-group">
+	  <label for="name" >{{S['LOGIN_NAME']}}</label>
+	  <input type="text" class="form-control input-lg" name="name" ng-model="fields.name">
+	</div>
+	<div class="form-group">
+	  <label for="pw">{{S['LOGIN_PASSWORD']}}</label>
+	  <input type="password" class="form-control input-lg" name="pw" ng-model="fields.pw"/>
+	</div>
+	<div ng-if="busy"><img src="css/spinner.gif" /></div>
+	<button type="submit" ng-if="!busy" class="btn-biggreen" >{{S['LOGIN_LOGIN']}}</button>
+	<div class="login-extra">
+		<a href="#" ng-click="showREGISTER()">{{S['LOGIN_PLZREGISTER']}}</a><br>
+		<a href="#" ng-click="showFORGET()">{{S['LOGIN_FORGOTYOURPASSWORD']}}</a>
+	</div>
+</form>

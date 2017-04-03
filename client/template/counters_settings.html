@@ -1,0 +1,39 @@
+<form ng-submit="onSubmit()" ng-controller="counters-ctrl-settings">
+
+	<nav class="local_menu">	
+		<div class="right">
+			<a href="#" ng-click="delCounter()"><i class="fa fa-trash"></i> {{S['COUNTER_DELETE']}}</a>
+			<a href="#" ng-click="showLIST()"><i class="fa fa-times"></i> {{S['COUNTER_CLOSE']}}</a>
+		</div>
+	</nav>
+    
+    <div class="form-group">
+        <label for="name">{{S['COUNTER_ENTERCOUNTERNAME']}}</label><span class="errorcolor"> {{fields.name.msg}}</span>
+        <input autofocus type="text" class="form-control input-lg" name="name" ng-model="fields.name.value">
+    </div>
+    
+    <div class="form-group">
+        <label for="max">{{S['COUNTER_ENTERMAXRECORD']}}</label><span class="errorcolor"> {{fields.max.msg}}</span>
+        <input type="quantity" class="form-control input-lg" name="max" ng-model="fields.max.value">
+    </div>
+    
+    <div class="form-group">
+        <label for="wkey">
+            <span class="wkeycolor"><i class="fa fa-key"></i> {{S['WRITEK']}}</span>
+            <a href="#" ng-click="setWKey()"><i class="fa fa-refresh"></i></a>
+        </label><span class="errorcolor"> {{fields.wkey.msg}}</span>
+        <input readonly type="text" class="form-control input-lg" name="wkey" ng-model="fields.wkey.value">
+    </div>
+    
+    <div class="form-group">
+        <label for="rkey">
+            <span class="rkeycolor"><i class="fa fa-key"></i> {{S['READK']}}</span>
+            <a href="#" ng-click="setRKey()"><i class="fa fa-refresh"></i></a>
+        </label><span class="errorcolor"> {{fields.rkey.msg}}</span>
+        <input readonly type="text" class="form-control input-lg" name="rkey" ng-model="fields.rkey.value">
+    </div>
+    
+    <button type="submit" class="btn-biggreen" ng-if="!busy">{{S['DLG_OK']}}</button> 
+	<button class="btn-biggreen" ng-if="!busy" ng-click="showLIST()">{{S['DLG_CANCEL']}}</button>
+    
+</form>

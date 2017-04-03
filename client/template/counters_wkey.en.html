@@ -1,0 +1,147 @@
+<nav class="local_menu">	
+	<div class="left">
+		<span class="wkeycolor"><i class="fa fa-key"></i> Write Key</span>
+	</div>
+	<div class="right">
+		<a href="#" ng-click="showLIST()"><i class="fa fa-times"></i> {{S['COUNTER_CLOSE']}}</a>
+	</div>
+</nav>
+
+<section class="samplesection">
+<h1>What is this stuff ?</h1>
+"Write-Key" is necessary to add records to your counter with an external application.<br>
+It could be a website, an Android/IOS app or any kind of desktop application as far as you are connected on Internet.<br>
+Sharing this key allows others users to push datas into your counter.<br>
+It's really up to you to share it or not! :-)<br>
+<br>
+
+<div class="sample">
+Yours is:<br>
+<code>{{currentCounter.wkey}}</code>
+<div class="copy">
+<a href="#" id="clip0" data-clipboard-text="{{currentCounter.wkey}}">
+Copy <i class="fa fa-clipboard"></i></a><script>new ZeroClipboard( document.getElementById("clip0") );</script><br>
+</div>
+</div>
+
+<div class="sample">
+Accessible through:<br>
+<code>
+method: HTTP1.1 POST<br> 
+{{baseUrl}}api.php?key={{currentCounter.wkey}}<br>
+input format: http url params, http post 'json' or 'jsonp'<br> 
+</code>
+<div class="copy">
+<a href="#" id="clip1" data-clipboard-text='{{baseUrl}}api.php?key={{currentCounter.wkey}}'>
+Copy <i class="fa fa-clipboard"></i></a><script>new ZeroClipboard( document.getElementById("clip1") );</script><br>
+</div>
+</div>
+<br>
+Record's fields are:<br>
+<ul>
+<li>'<b>date</b>': [optional, default=current date] - date (w3c or epoch)</li> 
+<li>'<b>lat</b>': [optional] - latitude (WGS84)</li>
+<li>'<b>lng</b>': [optional] - longitude (WGS84)</li>
+<li>'<b>alt</b>': [optional] - altitude (in meter)</li>
+<li>'<b>author</b>': [optional] - up to 40 characters (utf8)</li>
+<li>'<b>text</b>':  [optional] - up to 255 characters (utf8)</li>
+<li>'<b>value</b>': [optional] - numeric value</li>
+</ul>
+Others parameters:<br>
+<ul>
+<li>'<b>epoch</b>': use this parameter to get date in epoch format (w3c by default)</li> 
+</ul>
+<br>
+<p><b>WARNING:</b></p>
+Counter may have a maximum quantity of records (see counter settings). If the maximum is reached, oldest records are deleted.
+
+</section>
+
+
+<section class="samplesection">
+<h1>UNIX Examples:</h1>
+
+<div class="sample">
+<p>Example 1, push a single value.</p>
+This is the trivial sample to push a counter numeric 'value'. You can replace 'value' by any field you want.<br>
+<code>
+&gt; curl  -d &quot;&quot; -X POST &quot;{{baseUrl}}api.php?key={{currentCounter.wkey}}&amp;value=3.141516&quot;<br>
+&gt;
+</code>
+<div class="copy">
+<a href="#" id="clip2" data-clipboard-text='curl -d "" -X POST "{{baseUrl}}api.php?key={{currentCounter.wkey}}&value=3.141516"'>
+Copy <i class="fa fa-clipboard"></i></a><script>new ZeroClipboard( document.getElementById("clip2") );</script><br>
+</div>
+</div>
+
+
+<div class="sample">
+<p>Example 2, push a several values.</p>
+This is this another example where we push a 'date' in epoch format and a text<br>
+<code>
+&gt; curl  -d &quot;&quot; -X POST &quot;{{baseUrl}}api.php?key={{currentCounter.wkey}}&amp;text=Hello%20World&amp;date=1442282993&amp;epoch&quot;<br>
+&gt;
+</code>
+<div class="copy">
+<a href="#" id="clip3" data-clipboard-text='curl -d "" -X POST "{{baseUrl}}api.php?key={{currentCounter.wkey}}&text=Hello%20World&date=1442282993&epoch"'>
+Copy <i class="fa fa-clipboard"></i></a><script>new ZeroClipboard( document.getElementById("clip3") );</script><br>
+</div>
+</div>
+
+<div class="sample">
+<p>Example 3, send json.</p>
+Here, we do the same job as  previous example, but we post json data with curl instead<br>
+<code>
+&gt; DATA='{&quot;text&quot;:&quot;hello world 1&quot;, &quot;date&quot;:1442282993}'<br>
+&gt; curl -H "Content-Type: application/json" -X POST -d &quot$DATA&quot &quot;{{baseUrl}}api.php?key={{currentCounter.wkey}}&amp;epoch&quot;<br>
+&gt;
+
+</code>
+<div class="copy">
+<span ng-init='quote="&#039";'>
+<a href="#" id="clip4" data-clipboard-text='DATA={{quote}}{"text":"hello world 2", "date":1442282993}{{quote}}; curl -H "Content-Type: application/json" -X POST -d "$DATA" "{{baseUrl}}api.php?key={{currentCounter.wkey}}&epoch"'>
+Copy <i class="fa fa-clipboard"></i></a><script>new ZeroClipboard( document.getElementById("clip4") );</script><br>
+</div>
+</div>
+</section>
+
+<section class="samplesection">
+<h1>HTML Examples:</h1>
+They are various ways in HTML/JS to call a REST web-service (Ajax, JQuery, Angular...)<br>
+In this example I've choosen Ajax and Angular, however it should be easy to use the Javascript library you want.<br>
+<br>
+<div class="sample">
+<p>Example 1, With Ajax.</p>
+<code>
+var obj = {&quot;text&quot;:&quot;hello world 2&quot;, &quot;date&quot;:1442282993};<br>
+<br>
+$.ajax({<br>
+&nbsp;&nbsp;&nbsp;&nbsp;type: 'post',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dataType: 'json',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;crossDomain: true,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data: obj,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;url: '{{baseUrl}}api.php?key={{currentCounter.wkey}}&epoch',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;success: function(json) { console.log(json); },<br>
+&nbsp;&nbsp;&nbsp;&nbsp;error: function(err) { console.error(err); }<br>
+});<br>
+</code>
+</div>
+
+<div class="sample">
+<p>Example 2, With Angular.</p>
+<code>
+var obj = {&quot;text&quot;:&quot;hello world 3&quot;, &quot;date&quot;:1442282993};<br>
+<br>
+$http.post(&quot;{{baseUrl}}api.php?key={{currentCounter.rkey}}&amp;epoch&quot;, obj).then(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function(json) { console.log(json); },<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function(err) { console.log(err); }<br>
+);<br>
+</code>
+</div>
+	
+</section>
+
+
+<br><button class="btn-biggreen" ng-click="showLIST()">{{S['DLG_OK']}}</button> 
+
+

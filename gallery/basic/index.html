@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+  </head>
+  <body>
+	<script>
+	
+	var readkey = '194A46BE-17DD-44E1-AAD6-FC020C0D0C2D';
+	var writekey = 'AF1FDA3C-847A-44F0-9F4D-58FE12554D09';
+	
+	function getAllRecords() {
+		$.ajax({
+			type:'Get',
+			dataType:'jsonp',
+			url:'http://localhost/share-counter/api.php?key='+readkey,
+			success:function(json) {
+				console.log(json);
+				$("#result").val(JSON.stringify(json, null, 2));
+			},
+			error:function(err) {
+				console.error(err);
+			}
+		});
+	}
+	
+	function getLastestValue() {
+		$.ajax({
+			type:'Get',
+			dataType:'jsonp',
+			url:'http://localhost/share-counter/api.php?key='+readkey+'&from=0&count=1',
+			success:function(json) {
+				$("#result").val(json.datas[0].value);
+				console.log(json);
+			},
+			error:function(err) {
+				console.error(err);
+			}
+		});
+	}
+	
+	function pushValue(v) {
+		var obj = { value:v };
+		$.ajax({
+			type:'post',
+			data: JSON.stringify(obj),
+			url:'http://localhost/share-counter/api.php?key='+writekey,
+			success:function(json) {
+				console.log(json);
+			},
+			error:function(err) {
+				console.error(err);
+			}
+		});
+		$("#result").val("push "+v);
+	}
+	</script>
+	
+	<textarea rows="20" cols="50" id="result"></textarea><br>
+	<button onclick="getAllRecords()">get all records</button>
+	<button onclick="getLastestValue()">get latest value</button>
+	<button onclick="pushValue(Math.random()*10)">push a random value</button>
+  </body>
+</html>

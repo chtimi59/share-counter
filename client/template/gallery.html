@@ -1,0 +1,23 @@
+
+<script type="text/ng-template" id="gallery-item.html">
+<div class="gallery_item">
+	<div class="gbody">
+			<div class="gbody-left gbody-break">
+				<img ng-src="{{element.img}}" width=100% height=auto />
+			</div>
+			<div class="gbody-right gbody-break" ng-bind-html="element.html | to_trusted"></div>
+	</div>
+	<div class="gbuttons">
+		<ul>
+			<?PHP 
+			if($USER) print "<li ng-if='element.isInstall'><button class='btn btn-primary' ng-click='uninstallIt(element)'>Uninstall</button></li>";
+			if($USER) print "<li><button class='btn btn-primary' ng-click='installIt(element)'>Install</button></li>";
+			print "<li ng-if='element.default_url!=null'><button class='btn btn-primary' ng-click='tryIt(element)'>Try it</button></li>";
+			if($USER) print "<li><button class='btn btn-primary'>Download sources</button></li>";
+			?>
+		</ul>
+	</div>
+</div>
+</script>
+
+<ng-include src="'gallery-item.html'" ng-repeat="element in items"></ng-include>

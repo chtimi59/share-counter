@@ -1,0 +1,168 @@
+<nav class="local_menu">	
+	<div class="left">
+		<span class="rkeycolor"><i class="fa fa-key"></i> Read Key</span>
+	</div>
+	<div class="right">
+		<a href="#" ng-click="showLIST()"><i class="fa fa-times"></i> {{S['COUNTER_CLOSE']}}</a>
+	</div>
+</nav>
+
+<section class="samplesection">
+<h1>What is this stuff ?</h1>
+"Read-Key" is necessary to read records from your counter with an external application.<br>
+It could be a website, an Android/IOS app or any kind of desktop application as far as you are connected on Internet.<br>
+Sharing this key allows others users to read your counter's datas.<br>
+It's really up to you to share it or not! :-)<br>
+<br>
+
+<div class="sample">
+Yours is:<br>
+<code>{{currentCounter.rkey}}</code>
+<div class="copy">
+<a href="#" id="clip0" data-clipboard-text="{{currentCounter.rkey}}">
+Copy <i class="fa fa-clipboard"></i></a><script>new ZeroClipboard( document.getElementById("clip0") );</script><br>
+</div>
+</div>
+
+<div class="sample">
+Accessible through:<br>
+<code>
+method: HTTP1.1 GET<br> 
+{{baseUrl}}api.php?key={{currentCounter.rkey}}<br>
+output format: 'csv', 'json' or 'jsonp'<br> 
+</code>
+<div class="copy">
+<a href="#" id="clip1" data-clipboard-text='{{baseUrl}}api.php?key={{currentCounter.rkey}}'>
+Copy <i class="fa fa-clipboard"></i></a><script>new ZeroClipboard( document.getElementById("clip1") );</script><br>
+</div>
+</div>
+<br>
+Record's fields are:<br>
+<ul>
+<li>'<b>date</b>': w3c(default) or epoch</li> 
+<li>'<b>lat</b>': latitude (WGS84)</li>
+<li>'<b>lng</b>': longitude (WGS84)</li>
+<li>'<b>alt</b>': altitude (in meter)</li>
+<li>'<b>author</b>': up to 40 characters (utf8)</li>
+<li>'<b>text</b>':  up to 255 characters (utf8)</li>
+<li>'<b>value</b>': numeric value</li>
+</ul>
+Navigation in history is achieved by these optionals parameters:<br>
+<ul>
+<li>'<b>count</b>': number of elements expected (default: 1, max: 256)</li> 
+<li>'<b>from</b>': start offset (default: 0=latest)</li> 
+</ul>
+Others parameters:<br>
+<ul>
+<li>'<b>epoch</b>': use this parameter to get date in epoch format (w3c by default)</li> 
+</ul>
+</section>
+
+<section class="samplesection">
+<h1>UNIX Examples:</h1>
+
+<div class="sample">
+<p>Example 1, read latest value recorded.</p>
+This is the trivial sample to get the lastest counter numeric 'value'. You can replace 'value' by any field you want.<br>
+<br>
+<i>The result '3.1415' is given here as an example. It's depends one your counters contains and can even returns nothing if no value is set.</i><br>
+<code>
+&gt; curl &quot;{{baseUrl}}api.php?key={{currentCounter.rkey}}&amp;value&quot;<br>
+3.1415<br>
+&gt;
+</code>
+<div class="copy">
+<a href="#" id="clip2" data-clipboard-text='curl "{{baseUrl}}api.php?key={{currentCounter.rkey}}&value"'>
+Copy <i class="fa fa-clipboard"></i></a><script>new ZeroClipboard( document.getElementById("clip2") );</script><br>
+</div>
+</div>
+
+<div class="sample">
+<p>Example 2, read several fields.</p>
+This example shows how to read several fields at once. Here we should get 'value' and 'date' (with a coma separator).
+<code>
+&gt; curl &quot;{{baseUrl}}api.php?key={{currentCounter.rkey}}&amp;value&amp;date&quot;<br>
+2015-09-14 18:45:05, 3.1415<br>
+&gt; 
+</code>
+<div class="copy">
+<a href="#" id="clip3" data-clipboard-text='curl "{{baseUrl}}api.php?key={{currentCounter.rkey}}&value&date"'>
+Copy <i class="fa fa-clipboard"></i></a><script>new ZeroClipboard( document.getElementById("clip3") );</script><br>
+</div>
+</div>
+
+<div class="sample">
+<p>Example 3, read several records.</p>
+There is also two extras parameters available to navigate in counter history:
+<ul>
+<li>'count': number of elements expected</li> 
+<li>'from': start offset (0=latest)</li> 
+</ul>
+In this example we get the 2 latest value (with a new line character between them).
+<code>
+&gt; curl &quot;{{baseUrl}}api.php?key={{currentCounter.rkey}}&amp;date&amp;value&amp;count=2&quot;<br>
+2015-09-14 18:45:05, 3.1415<br>
+2015-09-14 18:40:15, 2.718281<br>
+&gt;<br>
+</code>
+<div class="copy">
+<a href="#" id="clip4" data-clipboard-text='curl "{{baseUrl}}api.php?key={{currentCounter.rkey}}&date&value&count=2"'>
+Copy <i class="fa fa-clipboard"></i></a><script>new ZeroClipboard( document.getElementById("clip4") );</script><br>
+</div>
+</div>
+
+<div class="sample">
+<p>Example 4, read in json format.</p>
+This is actually the default output format when no field is specified.<br>
+Note 'from' and 'count' parameters seen above are also available here.
+<code>
+&gt; curl &quot;{{baseUrl}}api.php?key={{currentCounter.rkey}}&quot;<br>
+{&quot;from&quot;:0,&quot;count&quot;:1,&quot;datas&quot;:[{&quot;id&quot;:&quot;2&quot;,&quot;date&quot;:&quot;2015-09-14 18:45:05&quot;,&quot;lat&quot;:null,&quot;lng&quot;:null,&quot;alt&quot;:&quot;9.5&quot;,&quot;author&quot;:null,&quot;text&quot;:null,&quot;value&quot;:&quot;3.1415&quot;}]}<br>
+&gt;<br>
+</code>
+<div class="copy">
+<a href="#" id="clip5" data-clipboard-text='curl "{{baseUrl}}api.php?key={{currentCounter.rkey}}"'>
+Copy <i class="fa fa-clipboard"></i></a><script>new ZeroClipboard( document.getElementById("clip5") );</script><br>
+</div>
+</div>
+</section>
+
+<section class="samplesection">
+<h1>HTML Examples:</h1>
+They are various ways in HTML/JS to call a REST web-service (Ajax, JQuery, Angular...)<br>
+In this example I've choosen Ajax and Angular, however it should be easy to use the Javascript library you want.<br>
+<br>
+<div class="sample">
+<p>Example 1, With Ajax.</p>
+To be able to request datas from a server which is in a different domain, you need to use<a href="https://en.wikipedia.org/wiki/JSONP">jsonp</a> format.
+<code>
+$.ajax({<br>
+&nbsp;&nbsp;&nbsp;&nbsp;type: 'get',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dataType: 'jsonp',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;url: '{{baseUrl}}api.php?key={{currentCounter.rkey}}',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;success: function(json) { console.log(json); },<br>
+&nbsp;&nbsp;&nbsp;&nbsp;error: function(err) { console.error(err); }<br>
+});<br>
+</code>
+</div>
+
+<div class="sample">
+<p>Example 2, With Angular.</p>
+<code>
+$http.get(&quot;{{baseUrl}}api.php?key={{currentCounter.rkey}}&quot;).then(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function(json) { console.log(json); },<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function(err) { console.log(err); }<br>
+);
+</code>
+</div>
+
+</section>
+
+<section class="samplesection">
+<h1>PYTHON Examples:</h1>
+Here again there is a lot library to do so. I suggest to use<a href="http://docs.python-requests.org/en/latest/index.html">Request</a>.<br>
+But again, if you feel more confortable with<a href="http://docs.python.org/release/2.7.2/library/urllib2.html">urllib2</a>,<a href="https://code.google.com/p/httplib2/">httplib2</a>or<a href="http://pycurl.sourceforge.net/">pycurl</a>, it shouldn't be an issue.
+<code>todo</code>
+</section>
+
+<br><button class="btn-biggreen" ng-click="showLIST()">{{S['DLG_OK']}}</button> 

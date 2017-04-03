@@ -1,0 +1,152 @@
+
+
+/* table */
+tbody  tr:not(.lighttext):hover {
+	background-color: #CCC !important;
+	cursor: pointer;
+	color: white;
+}
+
+.column_name {  font-weight: bold; } 
+
+.column_rkeys { max-width: 15% }
+td.column_rkeys { font-size: 0.8em; }
+
+.column_wkeys { max-width: 15% }
+td.column_wkeys { font-size: 0.8em; }
+
+.column_record { width: 100px; }
+.column_operation { width: 150px; }
+		
+.operation-add {
+	text-align: right;
+}
+.operation {
+	text-align: right;
+}
+.operation a {
+  color: #AAA;
+  font-size: 1.5em;
+  padding: 8px;
+}
+.operation a:hover {
+  color: #0D83DD;
+}
+
+.lighttext {
+  color: #CCC;
+  font-size: 1em;
+}
+
+
+
+/* popup dialog */
+.flatgray
+{
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	background-color: #e9e9e9;
+	padding:20px;
+	max-width: 450px !important;
+	border-radius: 10px;
+
+	font-family: Verdana,sans-serif;
+	color: black;
+	font-size: .75em;
+}
+.flatgray label
+{
+	font-family: Arial,Helvetica,sans-serif;
+	margin-bottom: 3px;
+	font-size: 15px;
+	font-weight: 100 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* gallery */
+.gallery_nav {
+	width:100%;
+	margin-bottom:30px;	
+}
+
+.gallery_item {
+	width:100%;
+	margin-bottom:30px;	
+	padding:10px;
+	background-color:#f0f0f0;
+	border-radius: 10px;
+}
+
+.gbody {
+	width:100%;
+	display:table;
+}
+.gbuttons{
+	width:100%;
+}
+
+@media screen and (max-width: 640px) { 
+	.gbody-break {
+		display: block;
+	}
+}
+@media screen and (min-width: 640px) { 
+	.gbody-break {
+		display: table-cell;
+	}
+}
+
+.gbody-left{
+	width:  300px;
+	height: 200px;    
+	padding: 5px;	
+	overflow: hidden;
+}
+
+.gbody-right{
+	padding: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+	vertical-align: top;
+	padding-bottom: 15px;
+	color: black;
+}
+.gbody-right h1 { 
+    font-size: 24px;
+    font-weight: 100;
+	padding: 0;
+	border: 0;
+    margin-top: 0;
+    margin-bottom: 10px;	
+}
+.gbody-right p {
+	text-align: justify;
+    text-justify: inter-word;
+}
+
+.gbuttons ul{
+	border: 0;
+	padding: 0;
+	margin: 0;
+	text-align: right;
+}
+.gbuttons li{
+	list-style: none;
+	display: inline;
+	margin: 3px;
+}

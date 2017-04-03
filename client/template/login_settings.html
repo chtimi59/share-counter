@@ -1,0 +1,27 @@
+<form ng-submit="onSubmit()" ng-controller="log-ctrl-settings">
+
+    <div class="form-group">
+        <label for="name">{{S['LOGIN_ENTERANAME']}}</label><span class="errorcolor"> {{fields.name.msg}}</span>
+        <input autofocus type="text" class="form-control input-lg" name="name" ng-model="fields.name.value">
+    </div>
+
+    <div class="form-group">
+        <label for="pw">{{S['LOGIN_ENTERAPASSWORD']}}</label><span class="errorcolor"> {{fields.pw.msg}}</span>
+        <input type="password" class="form-control input-lg" name="pw" ng-model="fields.pw.value">
+    </div>
+    
+    <div class="form-group">
+        <label for="pw2">{{S['LOGIN_REENTERAPASSWORD']}}</label><span class="errorcolor"> {{fields.pw2.msg}}</span>
+        <input type="password" class="form-control input-lg" name="pw2" ng-model="fields.pw2.value">
+    </div>
+    
+    <div class="form-group">
+        <label for="email">{{S['LOGIN_ENTERYOUREMAIL']}}</label><span class="errorcolor"> {{fields.email.msg}}</span>
+        <input type="email" class="form-control input-lg" name="email" ng-model="fields.email.value">
+    </div>
+    
+    <div ng-if="busy"><img src="css/spinner.gif" /></div>
+    <button type="submit" class="btn-biggreen" ng-if="!busy && verif">{{S['LOGIN_CREATEYOURACCOUNT']}}</button>    
+    <button type="submit" class="btn-biggreen" ng-if="!busy && verif===undefined">{{S['DLG_OK']}}</button>    
+    
+</form>

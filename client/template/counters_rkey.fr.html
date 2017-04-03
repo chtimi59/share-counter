@@ -1,0 +1,65 @@
+<nav class="local_menu">	
+	<div class="left">
+		<span class="rkeycolor"><i class="fa fa-key"></i> Clef de lecture</span>
+	</div>
+	<div class="right">
+		<a href="#" ng-click="showLIST()"><i class="fa fa-times"></i> {{S['COUNTER_CLOSE']}}</a>
+	</div>
+</nav>
+
+<div class="sample">
+<p>Read Key is needed to get a record from your counter, yours is:</p>
+<code>{{currentCounter.rkey}}</code>
+<a href="#" id="clip1" data-clipboard-text="{{currentCounter.rkey}}">
+Copy <i class="fa fa-clipboard"></i></a><script>new ZeroClipboard( document.getElementById("clip1") );</script><br>
+
+<br>
+<p>
+Possible records fields are:<br>
+<ul>
+<li>'date': epoch</li> 
+<li>'lat': latitude (WGS84)</li>
+<li>'lng': longitude (WGS84)</li>
+<li>'alt': altitude (in meter)</li>
+<li>'author': up to 40 unicode characters</li>
+<li>'text':  up to 255 unicode characters</li>
+<li>'value': numeric value</li>
+</ul>
+</p>
+</div>
+
+<h3>UNIX Examples:</h3>
+
+<div class="sample">
+<p>Read latest record</p>
+<code>&gt; curl &quot;{{baseUrl}}api.php?key={{currentCounter.rkey}}&amp;value&quot;</code>
+<a href="#" id="clip2" data-clipboard-text="curl "{{baseUrl}}api.php?id={{currentCounter.rkey}}&value"">
+Copy <i class="fa fa-clipboard"></i></a><script>new ZeroClipboard( document.getElementById("clip2") );</script><br>
+</div>
+
+<div class="sample">
+<p>Read only one specific field (here 'value')</p>
+<code>&gt; curl {{baseUrl}}api.php?id={{currentCounter.rkey}}&value</code>
+<a href="#" id="clip3" data-clipboard-text="curl {{baseUrl}}api.php?id={{currentCounter.rkey}}&date=1442124574&value=someone">
+Copy <i class="fa fa-clipboard"></i></a><script>new ZeroClipboard( document.getElementById("clip3") );</script><br>
+</div>
+
+<h3>HTML Examples:</h3>
+
+<div class="sample">
+<p>Read only one specific field (here 'value')</p>
+<code>todo</code>
+<a href="#" id="clip4" data-clipboard-text="curl {{baseUrl}}api.php?id={{currentCounter.rkey}}&date=1442124574&value=someone">
+Copy <i class="fa fa-clipboard"></i></a><script>new ZeroClipboard( document.getElementById("clip4") );</script><br>
+</div>
+
+<h3>PYTHON Examples:</h3>
+
+<div class="sample">
+<p>Read only one specific field (here 'value')</p>
+<code>todo</code>
+<a href="#" id="clip5" data-clipboard-text="curl {{baseUrl}}api.php?id={{currentCounter.rkey}}&date=1442124574&value=someone">
+Copy <i class="fa fa-clipboard"></i></a><script>new ZeroClipboard( document.getElementById("clip5") );</script><br>
+</div>
+
+<br><button class="btn-biggreen" ng-click="showLIST()">{{S['DLG_OK']}}</button> 

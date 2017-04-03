@@ -1,0 +1,21 @@
+/* COLORS and BACKGROUND  */
+.rkeycolor    { color: #009600; } /* write key */
+.wkeycolor    { color: #dd9352; } /* read  key */
+.errorcolor  { color: #ff0000; } /* red */
+
+.bgblue {
+	color: white;
+	background-color: #0D83DD;	
+}
+.bgblue a {
+	color: white;
+	text-decoration: underline;
+}
+.bggrey {
+	color: black;
+	background-color: #e9e9e9;
+}
+.bggrey a {
+	color: black;
+	background-color: #e9e9e9;
+}

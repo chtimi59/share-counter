@@ -1,0 +1,53 @@
+
+.page {
+	width:100%;
+	padding: 15px;
+	text-align: center;
+}
+
+/* horizontal center */
+.page .centerh{	
+	display: inline-block;
+	text-align: left;
+    margin: 0 auto;
+	padding: 15px;	
+}
+
+
+/* Stack horizontally some divs (and stay centred) */
+.page .hstack {
+	font-size: 20px;
+	width: 200px;
+	height: 150px;
+	margin: 10px;
+	float: left;
+	text-align: center;
+}
+.page .hstack img {
+	display: block;
+	margin-top: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5px;
+	width: 70px;	
+	height: 70px;
+}
+
+
+/* Stack vertically some divs */
+.page .vstack {
+	font-size: 20px;
+	width: 200px;
+	height: 150px;
+	margin: 10px;
+	text-align: center;
+}
+.page .vstack img {
+	display: block;
+	margin-top: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5px;
+	width: 70px;	
+	height: 70px;
+}

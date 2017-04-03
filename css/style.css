@@ -1,0 +1,130 @@
+
+/* define general responsive left/right margin
+   like boostrap does
+*/
+@media screen and (max-width: 991px) { 
+	.responsive_margin { max-width: 720px; }
+}
+@media screen and (min-width: 991px) { 
+	.responsive_margin { max-width: 940px; }
+}
+@media screen and (min-width: 1024px) { 
+	.responsive_margin { max-width: 1024px; }
+}
+.responsive_margin {
+	padding-right: 15px;
+    padding-left: 15px;
+	padding-top: 0px;
+	padding-bottom: 0px;	
+    margin-right: auto;
+    margin-left: auto;		
+}
+
+
+
+
+/* mobile/desktop discriminant */
+@media screen and (max-width: 767px) { .desktoponly { display: none !important;  } }
+@media screen and (min-width: 767px) { .mobileonly { display: none !important;  } }
+
+/* optional element to remove DOM */
+@media screen and (max-width: 767px) { .optional { display: none !important;  } }
+
+/* 90% of the view height */
+.fullheight { min-height:90vh; }
+
+/* used to break float */
+.breakfloat { clear: both; }
+
+/* remove yellow autofill Chrome */
+input:-webkit-autofill { -webkit-box-shadow: 0 0 0px 1000px white inset; }
+
+
+/* classic html 100% */
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+
+/* full screen wide body */
+body {
+	margin: 0px !important;
+	padding: 0px  !important;
+	overflow: auto;
+	width: 100% !important;	
+}
+
+/* header */
+@media screen and (max-width: 767px) { .headerheight { height: 80px; } } /* hamburger */
+@media screen and (min-width: 767px) { .headerheight { height: 55px; } } /* regular title bar */
+header  {
+	position: absolute;
+	width:100%;
+    left: 0;
+    top: 0;		
+}
+
+/* footer (stay stuck at the bottom) */
+.footerheight { height: 100px; } 
+footer  {
+	position: absolute;
+	width:100%;
+    left: 0;
+    bottom: 0;		
+}
+.footer {
+	position: relative;
+	border-top: 1px solid #CCC;	
+	color: #CCC;
+	margin-top: 15px;
+	padding-top: 15px;
+}
+.footer a {
+	color: #CCC;
+}
+
+/* Main popup message on top of screen */
+.popup {
+    position: fixed;
+    top: 10px;
+    width: 100%;
+    left: 0;
+    z-index: 5;
+}
+#popupError { display: none; }
+#popupInfo { display: none; }
+
+
+/* Sharecounter logo
+*  this <div class="logo"></div> line make it relatively upper the next 
+*  DOM element. This idea behind this, is to allow a partially cropped logo if not 
+*  enought places and hence focus on the contents
+*/
+.logo
+{
+  position: relative;
+  background-image: url(logo.png);
+  background-repeat: no-repeat;
+  min-width: calc(100%+20px);
+  height: 200px;
+  margin-top: -180px;
+  margin-bottom: -20px;
+  margin-right: -35px;
+  margin-left: 0;
+  pointer-events:none;
+}
+.logospacer {
+	pointer-events:none;
+	height: 150px;
+}
+
+code {
+    margin-top: 15px;
+    padding: 10px 10px;
+    font-size: 90%;
+    color: white;
+    background-color: #555;
+    border-radius: 5px;
+    display: block;
+}

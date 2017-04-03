@@ -1,0 +1,75 @@
+
+    <scd-dialog id="'question'">
+		<scd-dialog-titlebar>{{data.title}}</scd-dialog-titlebar>
+		<scd-dialog-body>
+			<p ng:bind-html="data.msg | to_trusted"></p>
+			<scd-dialog-buttons>
+				<button class="btn-biggreen" ng-click="resolve()">{{data.yes}}</button>
+				<button class="btn-biggreen" ng-click="reject()">{{data.no}}</button>
+			</scd-dialog-buttons>
+		</scd-dialog-body>
+	</scd-dialog>
+
+	<scd-dialog id="'message'">
+		<scd-dialog-titlebar>{{data.title}}</scd-dialog-titlebar>
+		<scd-dialog-body>
+			<p ng:bind-html="data.msg | to_trusted"></p>
+			<scd-dialog-buttons>
+				<button class="btn-biggreen" ng-click="resolve()">{{data.ok}}</button>
+			</scd-dialog-buttons>
+		</scd-dialog-body>
+	</scd-dialog>
+
+    <scd-dialog id="'newrecord'">
+		<scd-dialog-titlebar>{{data.title}}</scd-dialog-titlebar>
+		<scd-dialog-body>
+            <br>
+            <form ng-submit="data.action='change'; resolve(data)">
+            <ul class="nav nav-pills">
+              <li ng-class="{'active': data.active=='date'}">   <a ng-click="data.active='date'" href="#">{{data.tdate}}</a></li>
+              <li ng-class="{'active': data.active=='lat'}">    <a ng-click="data.active='lat'" href="#">{{data.tlatitude}}</a></li>
+              <li ng-class="{'active': data.active=='lng'}">    <a ng-click="data.active='lng'" href="#">{{data.tlongitude}}</a></li>
+              <li ng-class="{'active': data.active=='alt'}">    <a ng-click="data.active='alt'" href="#">{{data.taltitude}}</a></li>
+              <li ng-class="{'active': data.active=='author'}"> <a ng-click="data.active='author'" href="#">{{data.tauthor}}</a></li>
+              <li ng-class="{'active': data.active=='text'}">   <a ng-click="data.active='text'" href="#">{{data.ttext}}</a></li>
+              <li ng-class="{'active': data.active=='value'}">  <a ng-click="data.active='value'" href="#">{{data.tvalue}}</a></li>
+            </ul>            
+            <input scd-focus="data.active=='date'"    ng-if="data.active=='date'"   type="datetime" ng-model="data.date">
+            <input scd-focus="data.active=='lat'"     ng-if="data.active=='lat'"    type="number" step="any" ng-model="data.lat">
+            <input scd-focus="data.active=='lng'"     ng-if="data.active=='lng'"    type="number" step="any" ng-model="data.lng">
+            <input scd-focus="data.active=='alt'"     ng-if="data.active=='alt'"    type="number" step="any" ng-model="data.alt">
+            <input scd-focus="data.active=='author'"  ng-if="data.active=='author'" type="text" ng-model="data.author">
+            <input scd-focus="data.active=='text'"    ng-if="data.active=='text'"   type="text" ng-model="data.text">
+            <input scd-focus="data.active=='value'"   ng-if="data.active=='value'"  type="number" step="any" ng-model="data.value">
+            
+			<scd-dialog-buttons>
+				<button type="submit" class="btn-biggreen">{{data.ok}}</button>
+				<button class="btn-biggreen" ng-if="data.id!=-1" ng-click="data.action='delete'; resolve(data)">{{data.delete}}</button>
+                <button class="btn-biggreen" ng-click="reject()">{{data.cancel}}</button>
+			</scd-dialog-buttons>
+            </form>
+		</scd-dialog-body>
+	</scd-dialog>
+    
+	<scd-dialog id="'selectcounter'">
+		<scd-dialog-titlebar>{{data.title}}</scd-dialog-titlebar>
+		<scd-dialog-body>
+		<div class="dialog-max-height">
+		<?PHP 
+		/*if ($USER) {
+			$sql = 'SELECT * FROM `'.COUNTERLIST_TABLE.'` WHERE UUID="'.$USER['UUID'].'"';
+			$req = mysql_query($sql) or sqldie($sql);  
+			$num_rows = mysql_num_rows($req);
+			print "<table>";  
+			while ($data = mysql_fetch_assoc($req)) {
+				print "<tr><td>".$data['NAME']."</td></tr>";  
+			}
+			for ($i=0;$i<50;$i++) print "<li>copo</li>";  
+			print "</table>\n"; 
+		} */ ?>
+		</div>
+			<scd-dialog-buttons>
+				<button class="btn-biggreen" ng-click="resolve()">{{data.ok}}</button>
+			</scd-dialog-buttons>
+		</scd-dialog-body>
+	</scd-dialog>

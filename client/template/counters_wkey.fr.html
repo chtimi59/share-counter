@@ -1,0 +1,67 @@
+<nav class="local_menu">	
+	<div class="left">
+		<span class="wkeycolor"><i class="fa fa-key"></i> Clef d Ecriture</span>
+	</div>
+	<div class="right">
+		<a href="#" ng-click="showLIST()"><i class="fa fa-times"></i> {{S['COUNTER_CLOSE']}}</a>
+	</div>
+</nav>
+
+<div class="sample">
+<p>Write Key is needed to add record into your counter, yours is:</p>
+<code>{{currentCounter.wkey}}</code>
+<a href="#" id="clip1" data-clipboard-text="{{currentCounter.wkey}}">
+Copy <i class="fa fa-clipboard"></i></a><script>new ZeroClipboard( document.getElementById("clip1") );</script><br>
+
+<br>
+<p>
+Possible records fields are:<br>
+<ul>
+<li>'date':  epoch</li> 
+<li>'lat':   latitude</li>
+<li>'long':  longitude</li>
+<li>'alt':   atlitude</li>
+<li>'text':  text value</li>
+<li>'value': numeric value</li>
+</ul>
+</p>
+</div>
+
+<h3>UNIX Examples:</h3>
+
+<div class="sample">
+<p>Record value 3.1415</p>
+<code>&gt; curl {{baseUrl}}api.php?id={{currentCounter.wkey}}&value=3.1415</code>
+<a href="#" id="clip2" data-clipboard-text="curl {{baseUrl}}api.php?id={{currentCounter.wkey}}&value=5">
+Copy <i class="fa fa-clipboard"></i></a><script>new ZeroClipboard( document.getElementById("clip2") );</script><br>
+</div>
+
+<div class="sample">
+<p>Record value 'someone' with a specific date:</p>
+<code>&gt; curl {{baseUrl}}api.php?id={{currentCounter.wkey}}&date=1442124574&value=someone</code>
+<a href="#" id="clip3" data-clipboard-text="curl {{baseUrl}}api.php?id={{currentCounter.wkey}}&date=1442124574&value=someone">
+Copy <i class="fa fa-clipboard"></i></a><script>new ZeroClipboard( document.getElementById("clip3") );</script><br>
+</div>
+
+<h3>HTML Examples:</h3>
+
+<div class="sample">
+<p>Write on specific field (here 'value')</p>
+<code>todo</code>
+<a href="#" id="clip4" data-clipboard-text="curl {{baseUrl}}api.php?id={{currentCounter.rkey}}&date=1442124574&value=someone">
+Copy <i class="fa fa-clipboard"></i></a><script>new ZeroClipboard( document.getElementById("clip4") );</script><br>
+</div>
+
+<h3>PYTHON Examples:</h3>
+
+<div class="sample">
+<p>Write on specific field (here 'value')</p>
+<code>todo</code>
+<a href="#" id="clip5" data-clipboard-text="curl {{baseUrl}}api.php?id={{currentCounter.rkey}}&date=1442124574&value=someone">
+Copy <i class="fa fa-clipboard"></i></a><script>new ZeroClipboard( document.getElementById("clip5") );</script><br>
+</div>
+
+
+<br><button class="btn-biggreen" ng-click="showLIST()">{{S['DLG_OK']}}</button> 
+
+
